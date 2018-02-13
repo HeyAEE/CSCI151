@@ -1,12 +1,8 @@
 #include <stdio.h>
 #include <string>
+#include "Functions.h"
 using namespace std; // using the "std" namespace
 
-struct month
-{
-  string name;
-  int length;
-} year[12];
 
 year[0] = {.name = "January", .length = 31};
 year[1] = {.name = "February", .length = 28};

@@ -1,0 +1,4 @@
+/tmp/cc6J4Xtk.o: In function `main':
+main.cpp:(.text+0x5): undefined reference to `ByEleven()'
+main.cpp:(.text+0xa): undefined reference to `CalPrint2018()'
+collect2: error: ld returned 1 exit status
