@@ -35,16 +35,16 @@ public:
 	{
 		auto newRecord = make_unique<GradeRecord>(studentId, grade);
 		cout << "Record for student " << studentId << " added." << endl;
-		_records.push_back(newRecord);
+		_records.push_back(move(newRecord)); // Had to use move() (part of the unique_ptr class)
 	}
 	void updateRecord(int studentId, double grade)
 	{
-		unique_ptr<GradeRecord> record = nullptr; // Smart pointer of GradeRecord that refers to the nullptr FIRST, then whatever the pointer of the record you're looking for is.
+		GradeRecord* record = nullptr; // Smart pointer of GradeRecord that refers to the nullptr FIRST, then whatever the pointer of the record you're looking for is.
 		for (int i = 0; i < _records.size(); ++i)
 		{
 			if (_records.at(i)->getId() == studentId)
 			{
-				record.reset(_records.at(i).get());
+				record = _records.at(i).get();
 				break;
 			}
 		}
@@ -81,4 +81,4 @@ int main()
 	// HINT: everything thas has been allocated on the heap needs to be deleted
 	// HINT: deletion should be managed by resource owners, main owns the gradebook
 	// and the gradebook owns the grade records
-}
+}
