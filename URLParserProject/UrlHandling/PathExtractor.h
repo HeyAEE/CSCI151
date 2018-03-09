@@ -18,4 +18,6 @@ private:
 	std::string _component;
 	bool _isAbsolute;
 	std::vector<std::string> _pathComponents;
+	
+	void FindComponents();
 };

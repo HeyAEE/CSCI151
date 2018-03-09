@@ -11,6 +11,7 @@ public:
 	const std::string & GetBase() const override;
 	const std::string & GetComponent() const override;
 	SchemeType GetType() const;
+	const std::string & ToLowerCase(const std::string& phrase) const;
 private:
 	std::string _base;
 	std::string _component;

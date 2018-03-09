@@ -5,7 +5,7 @@ using namespace std;
 
 FragmentExtractor::FragmentExtractor(const std::string & value)
 {
-	Example URL: http://hotdiggitydog.com/bunwithrelish?ketchup=true#vegan
+//	Example URL: http://hotdiggitydog.com/bunwithrelish?ketchup=true#vegan
 	// look for '#' character
 	// if exists, _component = everything to the right of '#'
 	// _base = everything to the left of '#', or the entire value string if '#' doesn't exist

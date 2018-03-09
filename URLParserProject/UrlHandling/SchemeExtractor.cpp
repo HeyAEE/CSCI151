@@ -79,8 +79,3 @@ string ToLowerCase(string phrase) {
 	}
 	return lc;
 }
-
-int main()
-{
-	
-}
