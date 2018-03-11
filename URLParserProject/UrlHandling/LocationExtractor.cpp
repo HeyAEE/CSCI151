@@ -10,7 +10,7 @@ LocationExtractor::LocationExtractor(const std::string& value)
 	// _component = everything in between '//' and '/' (or end)
 	// _base = everything including and to the right of '/', or nothing if '/' doesn't exist
 
-	// This should get used AFTER FragmentExtractor. The argument for LocationExtractor should be SchemeExtractor::_base.
+	// This should get used AFTER SchemeExtractor. The argument for LocationExtractor should be SchemeExtractor::_base.
 	// Example URL: http://hotdiggitydog.com/bunwithrelish?ketchup=true#vegan
 	// After FragmentExtractor: http://hotdiggitydog.com/bunwithrelish?ketchup=true
 	// After SchemeExtractor: //hotdiggitydog.com/bunwithrelish?ketchup=true

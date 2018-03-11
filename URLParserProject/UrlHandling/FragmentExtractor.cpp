@@ -24,7 +24,7 @@ FragmentExtractor::FragmentExtractor(const std::string & value)
 	if (index != string::npos && index > 0)
 	{
 		FragmentExtractor::_component = value.substr(index + 1); //doing index+1 so pound sign is not included.
-		FragmentExtractor::_base = value.substr(0, index - 1);
+		FragmentExtractor::_base = value.substr(0, index);
 	}
 	else
 	{

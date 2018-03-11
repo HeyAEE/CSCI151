@@ -27,8 +27,10 @@ SchemeExtractor::SchemeExtractor(const std::string& value)
 	size_t index = value.find(":");
 	if (index != string::npos && index > 0)
 	{
-		SchemeExtractor::_base = ToLowerCase(value.substr(index + 1)); //doing index+1 so pound sign is not included.
-		SchemeExtractor::_component = ToLowerCase(value.substr(0, index - 1));
+		SchemeExtractor::_base = value.substr(index + 1); //doing index+1 so pound sign is not included.
+		SchemeExtractor::_component = value.substr(0, index);
+		ToLowerCase(SchemeExtractor::_component);
+		cout << SchemeExtractor::_component << endl;
 		if (SchemeExtractor::_component == "http" || SchemeExtractor::_component == "https") {
 			_type = SchemeType::Net;
 		}
@@ -44,8 +46,8 @@ SchemeExtractor::SchemeExtractor(const std::string& value)
 	}
 	else
 	{
-		SchemeExtractor::_base = ToLowerCase(value);
-		SchemeExtractor::_component = nullptr;
+		SchemeExtractor::_base = value;
+		SchemeExtractor::_component = "";
 		SchemeExtractor::_type = SchemeType::Unknown;
 	}
 	// NOTE: Theoretically, base should now be //hotdiggitydog.com/bunwithrelish?ketchup=true
@@ -70,12 +72,12 @@ bool SchemeExtractor::HasComponent() const
 	return 1;
 }
 
-string ToLowerCase(string phrase) {
-	string lc = nullptr;
-	for (int i = 0; i < phrase.length(); i++)
+void SchemeExtractor::ToLowerCase(string &phrase) {
+	// string lc = "";
+	cout << "SchemeExtractor Phrase before: " << phrase << endl;
+	for (int i = 0; i < phrase.size(); i++)
 	{
-		if (phrase[i] < 65 || phrase[i] > 90) { lc += phrase[i]; } // deals with punctuation, non-user characters, and lower case.
-		else { lc += (phrase[i] + 32); } // convert capital to lower case
+		phrase[i] = tolower(phrase[i]);
 	}
-	return lc;
+	cout << "SchemeExtractor Phrase after: " << phrase << endl;
 }

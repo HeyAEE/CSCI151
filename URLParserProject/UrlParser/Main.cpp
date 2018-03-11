@@ -9,20 +9,22 @@ int main(int argc, char* argv[]) try
 	// get command line arguments
 	string name = argv[0];
 	vector<string> arguments;	
-	for (int i = 1; i < argc; ++i)
-	{
-		arguments.push_back(argv[i]);
-	}
+	//for (int i = 1; i < argc; ++i)
+	//{
+	//	arguments.push_back(argv[i]);
+	//}
 
 	// validate command line arguments
-	if (arguments.size() < 1)
-	{
-		cout << "Expected Use: " << name << " <url>";
-		return EXIT_FAILURE;
-	}
+	//if (arguments.size() < 1)
+	//{
+	//	cout << "Expected Use: " << name << " <url>";
+	//	return EXIT_FAILURE;
+	//}
 
 	// parse and print url details
-	Url url{ arguments.at(0) };
+	//Url url{ arguments.at(0) };
+
+	Url url = "HTTPS://the.quick.brown/fox/jumped?over=the&lazy=dog#again";
 	cout << url << endl;
 	cout << "SCHEME: " << url.GetScheme() << endl;
 	cout << "NETLOC: " << url.GetLocation() << endl;

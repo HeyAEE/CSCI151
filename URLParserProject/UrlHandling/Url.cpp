@@ -28,6 +28,7 @@ Url::Url(const string& url)
 	cout << "FRAGMENT: " << _fragmentExtractor->GetComponent() << endl;
 	if (_fragmentExtractor->HasComponent())
 		parsing = _fragmentExtractor->GetBase();
+	cout << "Parsing after _fragmentExtractor: " << parsing << endl;
 
 	// 2. Check for a scheme and remove it from url if it is found
 	// 3. Check for a location and remove it from url if it is found
@@ -37,7 +38,7 @@ Url::Url(const string& url)
 
 	try
 	{
-		_schemeExtractor = make_unique<SchemeExtractor>(parsing);
+		_schemeExtractor = make_unique<SchemeExtractor>(SchemeExtractor(parsing));
 		if (_schemeExtractor->HasComponent())
 		{
 			parsing = _schemeExtractor->GetBase();
@@ -70,12 +71,53 @@ Url::Url(const string& url)
 	}
 	catch (const UrlFormatException& u)
 	{
-		cout << u.what();
+		cout << u.what() << endl;;
+	}
+	catch (exception& e)
+	{
+		cout << e.what() << endl;
 	}
 
+}
+
+
+std::ostream& operator<<(ostream& out, const Url& url)
+{
+	out << "URL: " << url << endl;
+	out << "SCHEME: " << url._schemeExtractor->GetComponent() << endl;
+	out << "PATH: " << url._pathExtractor->GetComponent() << endl;
+	out << "NETLOC: " << url._locationExtractor->GetComponent() << endl;
+	out << "QUERY: " << url._queryExtractor->GetComponent() << endl;
+	out << "FRAGMENT: " << url._fragmentExtractor->GetComponent() << endl;
+	out << "URL PIECED TOGETHER" << url._schemeExtractor->GetComponent() << "://"
+		<< url._locationExtractor->GetComponent() << "/"
+		<< url._pathExtractor->GetComponent() << "?"
+		<< url._queryExtractor->GetComponent() << "#"
+		<< url._fragmentExtractor->GetComponent();
+		return out;
 }
 
 std::string Url::GetFragment() const
 {
 	return _fragmentExtractor->HasComponent() ? _fragmentExtractor->GetComponent() : "";
+}
+
+std::string Url::GetScheme() const
+{
+	return _schemeExtractor->HasComponent() ? _schemeExtractor->GetComponent() : "";
+}
+
+std::string Url::GetQuery() const
+{
+	return _queryExtractor->HasComponent() ? _queryExtractor->GetComponent() : "";
+}
+
+std::string Url::GetLocation() const
+{
+	return _locationExtractor->HasComponent() ? _locationExtractor->GetComponent() : "";
+}
+
+std::string Url::GetPath() const
+{
+	return _pathExtractor->HasComponent() ? _pathExtractor->GetComponent() : "";
 }
