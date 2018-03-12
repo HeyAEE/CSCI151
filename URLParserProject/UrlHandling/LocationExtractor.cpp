@@ -34,8 +34,8 @@ LocationExtractor::LocationExtractor(const std::string& value)
 		if (*locationstart == -1) { *locationstart -= 1; }
 		if (*locationstart + 2 != *locationend && *locationend > 0)
 		{
-			LocationExtractor::_component = value.substr(*locationstart + 2, *locationend - 1); //doing *locationstart+2 so double slash is not included.
-			LocationExtractor::_base = value.substr(*locationend);
+			LocationExtractor::_component = value.substr(*locationstart + 2, *locationend+1); //doing *locationstart+2 so double slash is not included.
+			LocationExtractor::_base = value.substr(*locationend+2);
 		}
 		else if ((*locationstart + 2 != *locationend && *locationend < 0))
 		{

@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) try
 	// parse and print url details
 	//Url url{ arguments.at(0) };
 
-	Url url = "HTTPS://the.quick.brown/fox/jumped?over=the&lazy=dog#again";
+	Url url = "the.quick.brown/fox/jumped?over=the&lazy=dog#again";
 	cout << url << endl;
 	cout << "SCHEME: " << url.GetScheme() << endl;
 	cout << "NETLOC: " << url.GetLocation() << endl;

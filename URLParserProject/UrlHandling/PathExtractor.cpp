@@ -45,9 +45,9 @@ PathExtractor::PathExtractor(const string& value) {
 		_isAbsolute = false;
 		cout << "No path!" << endl;
 	}
-	else if (PathExtractor::GetComponent().at(0) == char("/"))
+	else if (value[0] == "/"[0])
 	{
-		_base = nullptr;
+		_base = "";
 		_component = value.substr(1);
 		_isAbsolute = true;
 		PathExtractor::FindComponents(); // puts components in the _pathComponents variable;
@@ -55,9 +55,9 @@ PathExtractor::PathExtractor(const string& value) {
 	}
 	else
 	{
-		_base = nullptr;
-		_component = value;
-		_isAbsolute = false;
+		PathExtractor::_base = "";
+		PathExtractor::_component = value;
+		PathExtractor::_isAbsolute = false;
 		PathExtractor::FindComponents();
 		cout << "Path components are: " << _component << endl;
 			

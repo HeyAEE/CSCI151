@@ -34,15 +34,15 @@ each parameter noted above.
 
 QueryExtractor::QueryExtractor(const std::string& value) {
 	size_t index = value.find("?");
-	_base = value.substr(0, index-1); // Everything before the question mark, which is why "index - 1"
+	_base = value.substr(0, index); // Everything before the question mark, which is why "index - 1"
 	_component = value.substr(index + 1); // Everything after the question mark.
 	FindParameters();
 	// Printing parameters just to see that I've gotten em.
-	cout << "Parameters are: ";
-	for (auto i = _parameters.begin(); i != _parameters.end(); ++i) {
-		cout << *i;
-	}
-	cout << endl;
+	//cout << "Parameters are: ";
+	//for (auto i = _parameters.begin(); i != _parameters.end(); ++i) {
+	//	cout << *i;
+	//}
+	//cout << endl;
 
 	// After QueryExtractor, _base should be /bunwithrelish
 }

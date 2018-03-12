@@ -30,7 +30,7 @@ SchemeExtractor::SchemeExtractor(const std::string& value)
 		SchemeExtractor::_base = value.substr(index + 1); //doing index+1 so pound sign is not included.
 		SchemeExtractor::_component = value.substr(0, index);
 		ToLowerCase(SchemeExtractor::_component);
-		cout << SchemeExtractor::_component << endl;
+	//	cout << SchemeExtractor::_component << endl;
 		if (SchemeExtractor::_component == "http" || SchemeExtractor::_component == "https") {
 			_type = SchemeType::Net;
 		}
@@ -74,10 +74,10 @@ bool SchemeExtractor::HasComponent() const
 
 void SchemeExtractor::ToLowerCase(string &phrase) {
 	// string lc = "";
-	cout << "SchemeExtractor Phrase before: " << phrase << endl;
+//	cout << "SchemeExtractor Phrase before: " << phrase << endl;
 	for (int i = 0; i < phrase.size(); i++)
 	{
 		phrase[i] = tolower(phrase[i]);
 	}
-	cout << "SchemeExtractor Phrase after: " << phrase << endl;
+//	cout << "SchemeExtractor Phrase after: " << phrase << endl;
 }
