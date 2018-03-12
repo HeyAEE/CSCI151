@@ -22,9 +22,10 @@ int main(int argc, char* argv[]) try
 	//}
 
 	// parse and print url details
-	//Url url{ arguments.at(0) };
+	Url url{ arguments.at(0) };
 
-	Url url = "the.quick.brown/fox/jumped?over=the&lazy=dog#again";
+	// Url url = "the.quick.brown/fox/jumped?over=the&lazy=dog#again";
+	// Url url = "https://"; --> memory leak for some reason. Ah well, it's time to call it.
 	cout << url << endl;
 	cout << "SCHEME: " << url.GetScheme() << endl;
 	cout << "NETLOC: " << url.GetLocation() << endl;
@@ -36,4 +37,9 @@ catch (const UrlFormatException& e)
 {
 	cout << "ERROR (UrlFormatException): " << e.what() << endl;
 	throw;
+}
+
+catch (const exception& e)
+{
+	cout << "ERROR: " << e.what() << endl;
 }

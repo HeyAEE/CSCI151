@@ -29,7 +29,7 @@ FragmentExtractor::FragmentExtractor(const std::string & value)
 	else
 	{
 		FragmentExtractor::_base = value;
-		FragmentExtractor::_component = nullptr;
+		FragmentExtractor::_component = "";
 
 	}
 

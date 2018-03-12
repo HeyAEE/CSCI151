@@ -26,9 +26,12 @@ Url::Url(const string& url)
 
 	// 1. Check for a fragment and remove it from url if it is 
 	_fragmentExtractor = make_unique<FragmentExtractor>(parsing);
-	cout << "FRAGMENT: " << _fragmentExtractor->GetComponent() << endl;
-	if (_fragmentExtractor->HasComponent())
+	cout << "FRAGMENT: ";
+	if (_fragmentExtractor->HasComponent()) {
+		cout << _fragmentExtractor->GetComponent();
 		parsing = _fragmentExtractor->GetBase();
+	}
+	cout << endl;
 //	cout << "Parsing after _fragmentExtractor: " << parsing << endl;
 
 	// 2. Check for a scheme and remove it from url if it is found
