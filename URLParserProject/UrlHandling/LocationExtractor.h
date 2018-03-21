@@ -13,5 +13,5 @@ private:
 	bool _hasLocation;
 	std::string _base;
 	std::string _component;
-	size_t _bounds[2];
+	int _bounds[2];
 };

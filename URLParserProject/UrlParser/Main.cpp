@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) try
 	//	arguments.push_back(argv[i]);
 	//}
 
-	// validate command line arguments
+	//// validate command line arguments
 	//if (arguments.size() < 1)
 	//{
 	//	cout << "Expected Use: " << name << " <url>";
@@ -22,10 +22,10 @@ int main(int argc, char* argv[]) try
 	//}
 
 	// parse and print url details
-	Url url{ arguments.at(0) };
+	// Url url{ arguments.at(0) };
 
 	// Url url = "the.quick.brown/fox/jumped?over=the&lazy=dog#again";
-	// Url url = "https://"; --> memory leak for some reason. Ah well, it's time to call it.
+	Url url = "https://"; //--> memory leak for some reason. Ah well, it's time to call it.
 	cout << url << endl;
 	cout << "SCHEME: " << url.GetScheme() << endl;
 	cout << "NETLOC: " << url.GetLocation() << endl;
@@ -37,9 +37,12 @@ catch (const UrlFormatException& e)
 {
 	cout << "ERROR (UrlFormatException): " << e.what() << endl;
 	throw;
+	return EXIT_FAILURE;
 }
 
 catch (const exception& e)
 {
 	cout << "ERROR: " << e.what() << endl;
+	throw;
+	return EXIT_FAILURE;
 }

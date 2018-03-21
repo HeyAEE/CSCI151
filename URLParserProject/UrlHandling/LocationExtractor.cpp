@@ -27,20 +27,19 @@ LocationExtractor::LocationExtractor(const std::string& value)
 
 	LocationExtractor::_bounds[0] = value.find("//");
 	LocationExtractor::_bounds[1] = value.substr(_bounds[0]+2).find("/");
-	size_t* locationstart = &LocationExtractor::_bounds[0];
-	size_t* locationend = &LocationExtractor::_bounds[1];
+	int* locationstart = &LocationExtractor::_bounds[0];
+	int* locationend = &LocationExtractor::_bounds[1];
 	if (*locationstart == string::npos || *locationstart == 0) // The double slashes either don't exist or they're at the beginning
 	{
-		if (*locationstart == -1) { *locationstart = 0; }
-		if (*locationstart + 2 != *locationend && *locationend > 0)
-		{
-			LocationExtractor::_component = value.substr(*locationstart + 2, *locationend+1); //doing *locationstart+2 so double slash is not included.
-			LocationExtractor::_base = value.substr(*locationend+2);
-		}
-		else if ((*locationstart + 2 != *locationend && *locationend < 0))
+		if ((*locationstart + 2 != *locationend && *locationend == string::npos))
 		{
 			LocationExtractor::_component = value.substr(*locationstart + 2); // Clearly, there isn't a file here. Maybe there's a location though!
 			LocationExtractor::_base = "";
+		}
+		else if (*locationstart + 2 != *locationend && *locationend > 0)
+		{
+			LocationExtractor::_component = value.substr(*locationstart + 2, *locationend+1); //doing *locationstart+2 so double slash is not included.
+			LocationExtractor::_base = value.substr(*locationend+2);
 		}
 		else
 		{

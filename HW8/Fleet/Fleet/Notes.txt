@@ -1,0 +1,5 @@
+﻿HW8:
+
+Question 3: The problem isn't with main(). Instead, I implemented a virtual function in Vehicle.h that was overridden in each derived class.
+
+Question 4: 
